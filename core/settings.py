@@ -29,6 +29,13 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
+MY_APPS = [
+    'apps.shop',
+]
+THIRD_PARTY_APPS = [
+    'phonenumber_field'
+
+]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -37,8 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'apps'
-]
+
+] + MY_APPS + THIRD_PARTY_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -55,7 +62,7 @@ ROOT_URLCONF = 'core.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR],
+        'DIRS': [BASE_DIR, 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
