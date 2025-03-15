@@ -31,9 +31,13 @@ ALLOWED_HOSTS = []
 # Application definition
 MY_APPS = [
     'apps.shop',
+    'apps.about',
+    'apps.post',
+    'apps.users',
+
 ]
 THIRD_PARTY_APPS = [
-    'phonenumber_field'
+    'phonenumber_field',
 
 ]
 
@@ -138,3 +142,5 @@ MEDIA_ROOT = BASE_DIR / 'media'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 PHONENUMBER_DEFAULT_REGION = 'KG'
+
+

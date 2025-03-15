@@ -8,11 +8,11 @@ def product_list(request):
     products = Product.objects.all()
     return render(request, 'shop/shop.html', {'products': products})
 
-
 class ProductDetail(DetailView):
     model = Product
     template_name = 'shop/shop-single.html'
     context_object_name = 'product'
+
 
 
 class MainPageView(TemplateView):
