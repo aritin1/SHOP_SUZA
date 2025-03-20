@@ -1,6 +1,6 @@
-
 {% load static %}
-{% block title %} Корзина {% endblock %}
+
+{% block title %} Регистрация {% endblock %}
 <html lang="en">
 
 <head>
@@ -74,7 +74,7 @@ https://templatemo.com/tm-559-zay-shop
                         <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
                         <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">7</span>
                     </a>
-                    <a class="nav-icon position-relative text-decoration-none" href="{% url 'register' %}">
+                    <a class="nav-icon position-relative text-decoration-none" href="#">
                         <i class="fa fa-fw fa-user text-dark mr-3"></i>
                         <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">+99</span>
                     </a>
@@ -86,59 +86,12 @@ https://templatemo.com/tm-559-zay-shop
     <!-- Close Header -->
 
 {% block content %}
-  <h1>Корзина</h1>
-  {% if cart %}
-    <table class="cart">
-      <thead>
-        <tr>
-          <th>Изображение</th>
-          <th>Название</th>
-          <th>Обновить кол-во</th>
-          <th>Удалить</th>
-          <th>Кол-во</th>
-          <th>Цена за шт</th>
-          <th>Общая стоимость</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for item in cart %}
-          {% with product=item.product %}
-            <tr>
-              <td>
-                <a href="{{ product.get_absolute_url }}">
-                  <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'img/no_image.png' %}{% endif %}" width="100">
-                </a>
-              </td>
-              <td>{{ product.name }}</td>
-              <td>
-                <form action="{% url 'cart:cart_add' product.id %}" method="post">
-                  {% csrf_token %}
-                  <input type="number" name="quantity" value="{{ item.quantity }}" min="1">
-                  <input type="submit" value="Обновить">
-                </form>
-              </td>
-              <td><a href="{% url 'cart:cart_remove' product.id %}">Удалить</a></td>
-              <td>{{ item.quantity }}</td>
-              <td>${{ product.price }}</td>
-              <td>${{ item.total_price }}</td>
-            </tr>
-          {% endwith %}
-        {% endfor %}
-        <tr class="total">
-          <td><strong>Всего</strong></td>
-          <td colspan="4"></td>
-          <td class="num">${{ cart.get_total_price }}</td>
-        </tr>
-      </tbody>
-    </table>
-    <p class="text-right">
-      <a href="{% url 'products-list' %}" class="button light">Вернуться в магазин</a>
-      <a href="{% url 'cart:cart_clear' %}" class="button">Оформить заказ</a>
-    </p>
-  {% else %}
-    <p>Ваша корзина пуста.</p>
-    <p><a href="{% url 'products-list' %}">Перейти в магазин</a></p>
-  {% endif %}
+<h1> REGISTER USER</h1>
+<form method="POST" action="{% url 'register' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Зарегистрироваться</button>
+</form>
 {% endblock %}
 
 
@@ -149,6 +102,6 @@ https://templatemo.com/tm-559-zay-shop
     <script src="{% static 'js/templatemo.js' %}"></script>
     <script src="{% static 'js/custom.js' %}"></script>
     <!-- End Script -->
-</body>
+
 
 </html>

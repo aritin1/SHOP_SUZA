@@ -34,7 +34,7 @@ MY_APPS = [
     'apps.about',
     'apps.post',
     'apps.cart',
-
+    'apps.users',
 
 ]
 THIRD_PARTY_APPS = [
@@ -146,4 +146,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 PHONENUMBER_DEFAULT_REGION = 'KG'
 
+AUTH_USER_MODEL = 'users.CustomUser'
 
+LOGIN_REDIRECT_URL = '/'
+LOGIN_URL = 'login'

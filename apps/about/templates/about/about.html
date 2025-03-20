@@ -64,16 +64,16 @@ https://templatemo.com/tm-559-zay-shop
                 <div class="flex-fill">
                     <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="index.html">Home</a>
+                            <a class="nav-link" href="{% url 'main' %}">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="about.html">About</a>
+                            <a class="nav-link" href="{% url 'about' %}">About</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'products-list' %}">Shop</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="contact.html">Contact</a>
+                            <a class="nav-link" href="{% url 'cart:cart_detail' %}">Cart</a>
                         </li>
                     </ul>
                 </div>
@@ -89,11 +89,11 @@ https://templatemo.com/tm-559-zay-shop
                     <a class="nav-icon d-none d-lg-inline" href="#" data-bs-toggle="modal" data-bs-target="#templatemo_search">
                         <i class="fa fa-fw fa-search text-dark mr-2"></i>
                     </a>
-                    <a class="nav-icon position-relative text-decoration-none" href="#">
+                    <a class="nav-icon position-relative text-decoration-none" href="{% url 'cart:cart_detail' %}">
                         <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
                         <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">7</span>
                     </a>
-                    <a class="nav-icon position-relative text-decoration-none" href="#">
+                    <a class="nav-icon position-relative text-decoration-none" href="{% url 'register' %}">
                         <i class="fa fa-fw fa-user text-dark mr-3"></i>
                         <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">+99</span>
                     </a>
@@ -133,7 +133,7 @@ https://templatemo.com/tm-559-zay-shop
                     </p>
                 </div>
                 <div class="col-md-4">
-                    <img src="assets/img/about-hero.svg" alt="About Hero">
+                    <img src="{% static 'img/about-hero.svg' %}" alt="About Hero">
                 </div>
             </div>
         </div>
@@ -144,10 +144,9 @@ https://templatemo.com/tm-559-zay-shop
     <section class="container py-5">
         <div class="row text-center pt-5 pb-3">
             <div class="col-lg-6 m-auto">
-                <h1 class="h1">Our Services</h1>
+                <h1 class="h1">Наши сервисы</h1>
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                    Lorem ipsum dolor sit amet.
+                    их нет
                 </p>
             </div>
         </div>
@@ -156,28 +155,28 @@ https://templatemo.com/tm-559-zay-shop
             <div class="col-md-6 col-lg-3 pb-5">
                 <div class="h-100 py-5 services-icon-wap shadow">
                     <div class="h1 text-success text-center"><i class="fa fa-truck fa-lg"></i></div>
-                    <h2 class="h5 mt-4 text-center">Delivery Services</h2>
+                    <h2 class="h5 mt-4 text-center">Доставка на луну</h2>
                 </div>
             </div>
 
             <div class="col-md-6 col-lg-3 pb-5">
                 <div class="h-100 py-5 services-icon-wap shadow">
                     <div class="h1 text-success text-center"><i class="fas fa-exchange-alt"></i></div>
-                    <h2 class="h5 mt-4 text-center">Shipping & Return</h2>
+                    <h2 class="h5 mt-4 text-center">Трейд обмен</h2>
                 </div>
             </div>
 
             <div class="col-md-6 col-lg-3 pb-5">
                 <div class="h-100 py-5 services-icon-wap shadow">
                     <div class="h1 text-success text-center"><i class="fa fa-percent"></i></div>
-                    <h2 class="h5 mt-4 text-center">Promotion</h2>
+                    <h2 class="h5 mt-4 text-center">скидки на 30 февраля</h2>
                 </div>
             </div>
 
             <div class="col-md-6 col-lg-3 pb-5">
                 <div class="h-100 py-5 services-icon-wap shadow">
                     <div class="h1 text-success text-center"><i class="fa fa-user"></i></div>
-                    <h2 class="h5 mt-4 text-center">24 Hours Service</h2>
+                    <h2 class="h5 mt-4 text-center">24 часа отдыхаем</h2>
                 </div>
             </div>
         </div>
@@ -191,8 +190,7 @@ https://templatemo.com/tm-559-zay-shop
                 <div class="col-lg-6 m-auto">
                     <h1 class="h1">Our Brands</h1>
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        Lorem ipsum dolor sit amet.
+                        NIKE ABIBAS ZAHA
                     </p>
                 </div>
                 <div class="col-lg-9 m-auto tempaltemo-carousel">

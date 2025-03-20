@@ -68,7 +68,7 @@ https://templatemo.com/tm-559-zay-shop
                 <div class="flex-fill">
                     <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="index.html">Home</a>
+                            <a class="nav-link" href="{% url 'main' %}">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'about' %}">About</a>
@@ -93,7 +93,7 @@ https://templatemo.com/tm-559-zay-shop
                     <a class="nav-icon d-none d-lg-inline" href="#" data-bs-toggle="modal" data-bs-target="#templatemo_search">
                         <i class="fa fa-fw fa-search text-dark mr-2"></i>
                     </a>
-                    <a class="nav-icon position-relative text-decoration-none" href="#">
+                    <a class="nav-icon position-relative text-decoration-none" href="{% url 'cart:cart_detail' %}">
                         <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
                         <span class="position-absolute top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">7</span>
                     </a>
@@ -244,7 +244,7 @@ https://templatemo.com/tm-559-zay-shop
                             </p>
                             <ul class="list-inline">
                                 <li class="list-inline-item">
-                                    <h6>Brand:</h6>
+                                    <h6>Brand: {{ product.brand }}</h6>
                                 </li>
                                 <li class="list-inline-item">
                                     <p class="text-muted"><strong>Easy Wear</strong></p>
@@ -252,7 +252,7 @@ https://templatemo.com/tm-559-zay-shop
                             </ul>
 
                             <h6>Description:</h6>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temp incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse. Donec condimentum elementum convallis. Nunc sed orci a diam ultrices aliquet interdum quis nulla.</p>
+                            <p>Крутой товар</p>
                             <ul class="list-inline">
                                 <li class="list-inline-item">
                                     <h6>Avaliable Color :</h6>
