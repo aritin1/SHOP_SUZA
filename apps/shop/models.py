@@ -39,6 +39,10 @@ class Brand(models.Model):
 
 
 class Product(models.Model):
+    class GenderChoices(models.TextChoices):
+        MEN = "M", "Мужчины"
+        WOMEN = "F", "Женщины"
+
     category = models.ForeignKey(
         Category,
         on_delete=models.CASCADE
@@ -48,6 +52,11 @@ class Product(models.Model):
         on_delete=models.SET_NULL,
         null=True,
         blank=True
+    )
+    gender = models.CharField(
+        max_length=1,
+        choices=GenderChoices.choices,
+        default=GenderChoices.MEN
     )
     name = models.CharField(
         max_length=25,

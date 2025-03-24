@@ -6,8 +6,13 @@ from apps.shop.models import Product
 
 
 def product_list(request):
+    gender = request.GET.get('gender', 'all')
     products = Product.objects.all()
-    return render(request, 'shop/shop.html', {'products': products})
+    if gender == 'men':
+        products = products.filter(gender='Men')
+    elif gender == 'women':
+        products = products.filter(gender='Women')
+    return render(request, 'shop/shop.html', {'products': products, 'gender': gender})
 
 
 class ProductDetail(DetailView):
