@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.views.generic import DetailView, TemplateView
 
 from apps.cart.forms import CartAddProductForm
-from apps.shop.models import Product
+from apps.shop.models import Product, Review
 
 
 def product_list(request):
@@ -25,8 +25,15 @@ class ProductDetail(DetailView):
 def product_detail(request, id):
     product = get_object_or_404(Product, id=id, available=True)
     cart_product_form = CartAddProductForm()
-    return render(request, 'shop/shop-single.html', {'product': product,
-                                                     'cart_product_form': cart_product_form})
+
+    # Получаем все отзывы для данного продукта
+    reviews = Review.objects.filter(product=product).order_by('-created_at')
+
+    return render(request, 'shop/shop-single.html', {
+        'product': product,
+        'cart_product_form': cart_product_form,
+        'reviews': reviews,  # Передаем отзывы в шаблон
+    })
 
 
 

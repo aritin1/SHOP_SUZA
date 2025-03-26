@@ -54,12 +54,6 @@ https://templatemo.com/tm-559-zay-shop
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'products-list' %}">Shop</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'login' %}">Login</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'register' %}">Register</a>
-                        </li>
                     </ul>
                 </div>
                 <div class="navbar align-self-center d-flex">
@@ -90,19 +84,20 @@ https://templatemo.com/tm-559-zay-shop
     <!-- Close Header -->
 {% block content %}
     <h1>Вход в аккаунт</h1>
-    <form method="POST" action="{% url 'login' %}">
-        {% csrf_token %}
-
-        {{ form.as_p }}
-
-        <button type="submit">Войти</button>
-    </form>
 
     {% if messages %}
         {% for message in messages %}
             <p style="color: red;">{{ message }}</p>
         {% endfor %}
     {% endif %}
+
+    <form method="POST" action="{% url 'login' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Войти</button>
+    </form>
+
+    <p>Еще нет аккаунта? <a href="{% url 'register' %}">Зарегистрироваться</a></p>
 {% endblock %}
 
 <!-- Start Script -->
