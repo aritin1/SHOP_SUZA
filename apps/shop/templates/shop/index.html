@@ -73,7 +73,11 @@ https://templatemo.com/tm-559-zay-shop
                             <a class="nav-link" href="{% url 'products-list' %}">Shop</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'login' %}">Login</a>
+                        {% if user.is_authenticated %}
+    <a class="nav-link"  href="{% url 'account' %}">Account</a>
+{% else %}
+    <a class="nav-link"  href="{% url 'login' %}">Login</a>
+{% endif %}
                         </li>
                     </ul>
                 </div>
@@ -197,11 +201,7 @@ https://templatemo.com/tm-559-zay-shop
     </div>
     <!-- End Banner Hero -->
 
-    {% if user.is_authenticated %}
-    <a href="{% url 'logout' %}">Выйти</a>
-{% else %}
-    <a href="{% url 'login' %}">Войти</a>
-{% endif %}
+
 
     <!-- Start Categories of The Month -->
     <section class="container py-5">
@@ -223,96 +223,7 @@ https://templatemo.com/tm-559-zay-shop
     <!-- End Categories of The Month -->
 
 
-    <!-- Start Featured Product -->
-    <section class="bg-light">
-        <div class="container py-5">
-            <div class="row text-center py-3">
-                <div class="col-lg-6 m-auto">
-                    <h1 class="h1">КЛАССНЫЕ ПРОДУКТЫ</h1>
-                    <p>
-                        лучшие из лучших
-                    </p>
-                </div>
-            </div>
-            <div class="row">
-                {% for product in products %}
-                <div class="col-12 col-md-4 mb-4">
-                    <div class="card h-100">
-                        <a href="{% url 'product-detail' product.pk %}">
-                            <img src="{{ product.image.url }}" >
-                        </a>
-                        <div class="card-body">
-                            <ul class="list-unstyled d-flex justify-content-between">
-                                <li>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-muted fa fa-star"></i>
-                                    <i class="text-muted fa fa-star"></i>
-                                </li>
-                                <li class="text-muted text-right">{{ product.price }}</li>
-                            </ul>
-                            <a href="shop-single.html" class="h2 text-decoration-none text-dark"></a>
-                            <p class="card-text">
 
-                            </p>
-                            <p class="text-muted">Reviews (24)</p>
-                        </div>
-                    </div>
-                </div>
-                {% endfor %}
-                <div class="col-12 col-md-4 mb-4">
-                    <div class="card h-100">
-                        <a href="shop-single.html">
-                            <img src="{% static 'img/feature_prod_02.jpg' %}" class="card-img-top" alt="...">
-                        </a>
-                        <div class="card-body">
-                            <ul class="list-unstyled d-flex justify-content-between">
-                                <li>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-muted fa fa-star"></i>
-                                    <i class="text-muted fa fa-star"></i>
-                                </li>
-                                <li class="text-muted text-right">$480.00</li>
-                            </ul>
-                            <a href="shop-single.html" class="h2 text-decoration-none text-dark">Cloud Nike Shoes</a>
-                            <p class="card-text">
-                                Aenean gravida dignissim finibus. Nullam ipsum diam, posuere vitae pharetra sed, commodo ullamcorper.
-                            </p>
-                            <p class="text-muted">Reviews (48)</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-4 mb-4">
-                    <div class="card h-100">
-                        <a href="shop-single.html">
-                            <img src="{% static 'img/feature_prod_03.jpg' %}" class="card-img-top" alt="...">
-                        </a>
-                        <div class="card-body">
-                            <ul class="list-unstyled d-flex justify-content-between">
-                                <li>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                    <i class="text-warning fa fa-star"></i>
-                                </li>
-                                <li class="text-muted text-right">$360.00</li>
-                            </ul>
-                            <a href="shop-single.html" class="h2 text-decoration-none text-dark">Summer Addides Shoes</a>
-                            <p class="card-text">
-                                Curabitur ac mi sit amet diam luctus porta. Phasellus pulvinar sagittis diam, et scelerisque ipsum lobortis nec.
-                            </p>
-                            <p class="text-muted">Reviews (74)</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- End Featured Product -->
 {% block content %}
 {% endblock %}
     <!-- Start Footer -->

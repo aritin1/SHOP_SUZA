@@ -53,6 +53,13 @@ https://templatemo.com/tm-559-zay-shop
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'products-list' %}">Shop</a>
                         </li>
+                        <li class="nav-item">
+                        {% if user.is_authenticated %}
+    <a class="nav-link"  href="{% url 'account' %}">Account</a>
+{% else %}
+    <a class="nav-link"  href="{% url 'login' %}">Login</a>
+{% endif %}
+                        </li>
                     </ul>
                 </div>
                 <div class="navbar align-self-center d-flex">
@@ -87,6 +94,7 @@ https://templatemo.com/tm-559-zay-shop
   {% if cart %}
     <table class="cart">
       <thead>
+      {% if user.is_authenticated %}
         <tr>
           <th>Изображение</th>
           <th>Название</th>
@@ -129,22 +137,25 @@ https://templatemo.com/tm-559-zay-shop
       </tbody>
     </table>
 
-    <!-- Форма для ввода адреса и номера карты -->
-    <form action="{% url 'cart:cart_detail' %}" method="post">
-      {% csrf_token %}
-      <h3>Оформление заказа</h3>
+      <form action="{% url 'cart:cart_clear' %}" method="post">
+        {% csrf_token %}
+        <h3>Оформление заказа</h3>
 
-      <label for="address">Адрес доставки:</label>
-      <textarea id="address" name="address" rows="4" placeholder="Введите ваш адрес" required></textarea>
+        <label for="address">Адрес доставки:</label>
+        <textarea id="address" name="address" rows="4" placeholder="Введите ваш адрес" required></textarea>
 
-      <label for="card_number">Номер карты:</label>
-      <input type="text" id="card_number" name="card_number" placeholder="Введите номер вашей карты" required>
+        <label for="card_number">Номер карты:</label>
+        <input type="text" id="card_number" name="card_number" placeholder="Введите номер вашей карты" required>
 
-      <p class="text-right">
-        <a href="{% url 'products-list' %}" class="button light">Вернуться в магазин</a>
-        <input type="submit" value="Оформить заказ" class="button">
-      </p>
-    </form>
+        <p class="text-right">
+          <a href="{% url 'products-list' %}" class="button light">Вернуться в магазин</a>
+          <input type="submit" value="Оформить заказ" class="button">
+        </p>
+      </form>
+    {% else %}
+      <p><strong>Для оформления заказа необходимо <a href="{% url 'login' %}">войти</a> или <a href="{% url 'register' %}">зарегистрироваться</a>.</strong></p>
+    {% endif %}
+
   {% else %}
     <p>Ваша корзина пуста.</p>
     <p><a href="{% url 'products-list' %}">Перейти в магазин</a></p>

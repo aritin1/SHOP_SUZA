@@ -73,7 +73,11 @@ https://templatemo.com/tm-559-zay-shop
                             <a class="nav-link" href="{% url 'products-list' %}">Shop</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'login' %}">Login</a>
+                        {% if user.is_authenticated %}
+    <a class="nav-link"  href="{% url 'account' %}">Account</a>
+{% else %}
+    <a class="nav-link"  href="{% url 'login' %}">Login</a>
+{% endif %}
                         </li>
                     </ul>
                 </div>

@@ -21,5 +21,7 @@ def cart_detail(request):
 def cart_clear(request):
     cart = Cart(request)
     cart.clear()
-    return redirect('products-list')
+    return redirect('cart:cart_detail')
+
+
 
